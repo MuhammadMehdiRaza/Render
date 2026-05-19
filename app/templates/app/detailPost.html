@@ -1,0 +1,22 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+{% for post in post %}
+<div>
+    <h2>Post Title {{post.title}}</h2>
+        <h2> Post Category {{post.get_category_display }}</h2>
+        <h2>By {{post.author.username}} &nbsp;|&nbsp; - {{post.date}}</h2>
+        <p>POST Content {{post.content|linebreaks}}</p>
+
+        {% if user == post.author %}
+        <a href="{% url 'editPost' post.pk %}">EditPost</a>
+        <a href="{% url 'deletePost' post.pk %}">DeletePost</a>
+        <a href="{% url 'summary' post.pk %}">Summary</a>
+        {% endif %}
+
+
+
+</div>
+{% endfor %}
+
+{% endblock %}

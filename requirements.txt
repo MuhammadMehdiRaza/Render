@@ -1,0 +1,5 @@
+groq
+whitenoise
+django
+python-dotenv
+gunicorn

@@ -1,0 +1,32 @@
+{% extends "app/base.html" %}
+
+{% block content %}
+    <div>
+        {% if post %}
+        <h2>Edit Post</h2>
+        {% else %}
+        <h2>New Post</h2>
+        {% endif %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div>
+            <label for="">Enter the title: </label><input type="text" name="title" value="{{post.title}}">   
+            </div>
+            <div>
+                <label for="">Enter the category:</label>
+                <select name="category" id="">
+                    <option value="tech" {% if post.category == "tech" %} selected {% endif %}>Technology</option>
+                    <option value="edu" {% if post.category == "edu" %} selected {% endif %}>Education</option>
+                </select>
+                
+            </div>
+            <div>
+                <label for="">Enter the content</label>
+                <textarea name="content" id="">{{post.content}}</textarea>
+            </div>
+            <button type="Save">Submit</button>
+            <a href="{% url 'home' %}">Cancel</a>
+
+        </form>
+    </div>
+{% endblock %}
